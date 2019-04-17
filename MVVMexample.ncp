@@ -1,0 +1,63 @@
+<Project>
+  <Name>MVVMexample</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>untitled</Name>
+    <Language>CSharp</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Level</Name>
+        <Access>Public</Access>
+        <Location left="187" top="278" />
+        <Size width="162" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public Video Video { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Video</Name>
+        <Access>Public</Access>
+        <Location left="187" top="439" />
+        <Size width="162" height="99" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Title { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>LevelVM</Name>
+        <Access>Public</Access>
+        <Location left="495" top="265" />
+        <Size width="209" height="146" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Name { get; set; }</Member>
+        <Member type="Property">public VideoVM Video { get; set; }</Member>
+        <Member type="Property">private Level _level { get; set; }</Member>
+        <Member type="Property">private Video _video { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>VideoVM</Name>
+        <Access>Public</Access>
+        <Location left="495" top="439" />
+        <Size width="209" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public string Title { get; set; }</Member>
+        <Member type="Property">private Video Video { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>VM</Name>
+        <Access>Public</Access>
+        <Location left="420" top="32" />
+        <Size width="373" height="216" />
+        <Collapsed>False</Collapsed>
+        <Member type="Property">public ObservableCollection&lt;LevelVM&gt; LevelsVM { get; set; }</Member>
+        <Member type="Property">public LevelVM SelectedLevelVM { get; set; }</Member>
+        <Member type="Property">private ObservableCollection&lt;Level&gt; _levels { get; set; }</Member>
+        <Member type="Property">private ObservableCollection&lt;LevelVM&gt; _levelsvm { get; set; }</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships />
+  </ProjectItem>
+</Project>

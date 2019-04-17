@@ -10,7 +10,6 @@ namespace MVVMexample.Model
     public class Video : INotifyPropertyChanged
     {
         private string _title { get; set; }
-
         public string Title { get { return _title; } set { _title = value; OnPropertyChanged("Title"); } }
 
 

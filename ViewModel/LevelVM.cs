@@ -26,8 +26,7 @@ namespace MVVMexample.ViewModel
 
         public VideoVM Video
         {
-            get { return new VideoVM(_level.Video); }
-            set { _video = ????; OnPropertyChanged("Video"); }
+            get { return new VideoVM(_level.Video); } // ЕСЛИ СЛОЖНАЯ ВЛОЖЕННАЯ СТРУКТУРА - то ее не присваиваем! А?
         }
 
 

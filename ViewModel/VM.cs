@@ -16,7 +16,7 @@ namespace MVVMexample.ViewModel
         private ObservableCollection<LevelVM> _levelsvm { get; set; }
 
 
-        public LevelVM SelectedLevelVM;
+
         public ObservableCollection<LevelVM> LevelVMs
         {
             get
@@ -26,9 +26,26 @@ namespace MVVMexample.ViewModel
             }
         }
 
+
+        private LevelVM _SelectedLevelVM;
+        public LevelVM SelectedLevelVM
+        {
+            get
+            { return _SelectedLevelVM; }
+            set
+            {
+                _SelectedLevelVM = value;
+                OnPropertyChanged("SelectedLevelVM");
+            }
+
+        }
+
         public VM()
         {
             _levels = new ObservableCollection<Level>();
+            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
+            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
+            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
 
         }
 

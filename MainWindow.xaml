@@ -12,7 +12,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
 
-        <ListBox Grid.Column="0" ItemsSource="{Binding Path=LevelVMs, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" SelectedItem="{Binding SelectedLevelVM}" >
+        <ListBox Grid.Column="0" ItemsSource="{Binding Path=LevelVMs, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding SelectedLevelVM}" >
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel>
@@ -22,7 +22,7 @@
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>
-        <StackPanel Grid.Column="1" DataContext="{Binding SelectedLevelVM}">
+        <StackPanel Grid.Column="1" DataContext="{Binding SelectedLevelVM,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
             <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="26"/>
             <TextBox Text="{Binding Video.Title, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
         </StackPanel>

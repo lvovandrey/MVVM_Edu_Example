@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,6 +12,7 @@ namespace MVVMexample.ViewModel
 {
     class VM : INotifyPropertyChanged
     {
+        Context context;
 
         private ObservableCollection<Level> _levels { get; set; }
         private ObservableCollection<LevelVM> _levelsvm { get; set; }
@@ -42,6 +44,7 @@ namespace MVVMexample.ViewModel
 
         public VM()
         {
+            context = new Context();
               _levels = new ObservableCollection<Level>();
             //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
             //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
@@ -79,8 +82,7 @@ namespace MVVMexample.ViewModel
                       l.Video = new Video() { Title = "dsdn" };
                       _levels.Insert(0, l);
 
-                      using (Context context = new Context())
-                      {
+                     
                           context.Levels.Add(l);
                           context.SaveChanges();
 
@@ -88,7 +90,28 @@ namespace MVVMexample.ViewModel
                           { }
 
                           OnPropertyChanged("LevelVMs");
-                      }
+                     
+                  }));
+            }
+        }
+
+        private RelayCommand saveCommand;
+        public RelayCommand SaveCommand
+        {
+            get
+            {
+                return saveCommand ??
+                  (saveCommand = new RelayCommand(obj =>
+                  {
+//                      context.Levels.First() = _levels.First() ;
+                      context.Entry(_levels.First()).State = EntityState.Modified;
+                      context.SaveChanges();
+                      foreach (Level vl in context.Levels)
+                      { }
+                      foreach (Level vl in _levels)
+                      { }
+                      OnPropertyChanged("LevelVMs");
+
                   }));
             }
         }

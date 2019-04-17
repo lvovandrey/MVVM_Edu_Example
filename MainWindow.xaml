@@ -29,5 +29,6 @@
         </StackPanel>
         
         <Button Grid.Column="1" Height="20" Command="{Binding AddCommand}">Add</Button>
+        <Button Grid.Column="1" Height="20" Command="{Binding SaveCommand}" Margin="0,225,0,175">Save</Button>
     </Grid>
 </Window>

@@ -39,12 +39,10 @@ namespace MVVMexample.ViewModel
             }
 
         }
-        object DC;
 
-        public VM(object dataContext)
+        public VM()
         {
-            DC = dataContext;
-            _levels = new ObservableCollection<Level>();
+              _levels = new ObservableCollection<Level>();
             //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
             //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
             //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });

@@ -39,15 +39,62 @@ namespace MVVMexample.ViewModel
             }
 
         }
+        object DC;
 
-        public VM()
+        public VM(object dataContext)
         {
+            DC = dataContext;
             _levels = new ObservableCollection<Level>();
-            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
-            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
-            _levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
+            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
+            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
+            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
 
+
+             _levels = new ObservableCollection<Level>();
+            using (Context context = new Context())
+            {
+                var temp = Repository.Select<Level>().Where(c => true==true).ToList();
+
+                if (context.Levels.Count() > 0)
+                {
+                    foreach (var item in temp)
+                    {
+                        _levels.Add(item);
+                    }
+                }
+
+            }
         }
+
+
+
+        private RelayCommand addCommand;
+        public RelayCommand AddCommand
+        {
+            get
+            {
+                return addCommand ??
+                  (addCommand = new RelayCommand(obj =>
+                  {
+                      Level l = new Level();
+                      l.Name = "New Book";
+                      l.Video = new Video() { Title = "dsdn" };
+                      _levels.Insert(0, l);
+
+                      using (Context context = new Context())
+                      {
+                          context.Levels.Add(l);
+                          context.SaveChanges();
+
+                          foreach(Level vl in context.Levels)
+                          { }
+
+                          OnPropertyChanged("LevelVMs");
+                      }
+                  }));
+            }
+        }
+
 
 
         #region mvvm

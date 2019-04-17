@@ -25,7 +25,7 @@ namespace MVVMexample
         public MainWindow()
         {
             InitializeComponent();
-            vm = new VM();
+            vm = new VM(DataContext);
             DataContext = vm;
         }
     }

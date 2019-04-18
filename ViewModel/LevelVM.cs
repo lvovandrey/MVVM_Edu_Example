@@ -16,6 +16,7 @@ namespace MVVMexample.ViewModel
         public LevelVM(Level level)
         {
             _level = level;
+            _videovm = new VideoVM(_level.Video);  //ВОт как надо - надо опираться на единую модель и не создавать новые представления в геттерах!!!
         }
 
         public string Name
@@ -24,9 +25,15 @@ namespace MVVMexample.ViewModel
             set { _level.Name = value; OnPropertyChanged("Name"); }
         }
 
+        /// <summary>
+        /// ВОТ !!! Вот как нада! 
+        /// </summary>
+        private VideoVM _videovm { get; set; } 
         public VideoVM Video
         {
-            get { return new VideoVM(_level.Video); } // ЕСЛИ СЛОЖНАЯ ВЛОЖЕННАЯ СТРУКТУРА - то ее не присваиваем! А?
+            get {
+                return _videovm;
+            } // ЕСЛИ СЛОЖНАЯ ВЛОЖЕННАЯ СТРУКТУРА - то ее не присваиваем! А?
         }
 
 

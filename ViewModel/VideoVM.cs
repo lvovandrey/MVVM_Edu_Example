@@ -17,7 +17,8 @@ namespace MVVMexample.ViewModel
             this._video = video;
         }
 
-        public string Title { get { return _video.Title; } set { _video.Title = value; } }
+        public string Title { get { return _video.Title; }
+            set { _video.Title = value; OnPropertyChanged("Title"); } }
 
         #region mvvm
         public event PropertyChangedEventHandler PropertyChanged;

@@ -14,7 +14,8 @@ namespace MVVMexample.Model
         [NotMapped]
         private string _title { get; set; }
 
-        public string Title { get { return _title; } set { _title = value; OnPropertyChanged("Title"); } }
+        public string Title { get { return _title; }
+            set { _title = value; OnPropertyChanged("Title"); } }
 
 
         #region mvvm

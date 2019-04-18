@@ -24,7 +24,8 @@
         </ListBox>
         <StackPanel Grid.Column="1" DataContext="{Binding SelectedLevelVM,UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}">
             <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}" FontSize="26"/>
-            <TextBox Text="{Binding Video.Title, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
+            <TextBox DataContext="{Binding Video , UpdateSourceTrigger=PropertyChanged}"
+                     Text="{Binding Title, UpdateSourceTrigger=PropertyChanged,Mode=TwoWay}"/>
             
         </StackPanel>
         

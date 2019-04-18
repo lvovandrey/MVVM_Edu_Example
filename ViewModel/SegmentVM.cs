@@ -1,30 +1,25 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MVVMexample.Model
+namespace MVVMexample.ViewModel
 {
-    public class Video : INotifyPropertyChanged
+    public class SegmentVM : INotifyPropertyChanged
     {
+        private Segment _segment;
 
-        [NotMapped]
-        private string _title { get; set; }
-
-        public string Title { get { return _title; }
-            set { _title = value; OnPropertyChanged("Title"); } }
-
-
-        [NotMapped]
-        private Segment _segment { get; set; }
-
-        public Segment Segment
+        public VideoVM(SegmentVM segment)
         {
-            get { return _segment; }
-            set { _segment = value; OnPropertyChanged("Segment"); }
+            this._video = video;
+        }
+
+        public string Title
+        {
+            get { return _video.Title; }
+            set { _video.Title = value; OnPropertyChanged("Title"); }
         }
 
         #region mvvm

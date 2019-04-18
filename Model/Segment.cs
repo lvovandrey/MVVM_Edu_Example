@@ -8,23 +8,21 @@ using System.Threading.Tasks;
 
 namespace MVVMexample.Model
 {
-    public class Video : INotifyPropertyChanged
+    public class Segment : INotifyPropertyChanged
     {
 
         [NotMapped]
-        private string _title { get; set; }
+        private TimeSpan _time { get; set; }
 
-        public string Title { get { return _title; }
-            set { _title = value; OnPropertyChanged("Title"); } }
-
-
-        [NotMapped]
-        private Segment _segment { get; set; }
-
-        public Segment Segment
+        public TimeSpan Time
         {
-            get { return _segment; }
-            set { _segment = value; OnPropertyChanged("Segment"); }
+            get { return _time; }
+            set { _time = value; OnPropertyChanged("Time"); }
+        }
+
+        public Segment(TimeSpan time)
+        {
+            Time = time;
         }
 
         #region mvvm

@@ -62,8 +62,10 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Model\DB.cs" />
+    <Compile Include="Model\Segment.cs" />
     <Compile Include="ViewModel\LevelVM.cs" />
     <Compile Include="ViewModel\RelayCommand.cs" />
+    <Compile Include="ViewModel\SegmentVM.cs" />
     <Compile Include="ViewModel\VM.cs" />
     <Compile Include="ViewModel\VideoVM.cs" />
     <Page Include="MainWindow.xaml">

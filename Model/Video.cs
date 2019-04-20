@@ -8,8 +8,10 @@ using System.Threading.Tasks;
 
 namespace MVVMexample.Model
 {
+    //[ComplexType]
     public class Video : INotifyPropertyChanged
     {
+        public int Id { get; set; }
 
         [NotMapped]
         private string _title { get; set; }

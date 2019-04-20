@@ -43,18 +43,32 @@ namespace MVVMexample.ViewModel
         public VM()
         {
             context = new Context();
-              _levels = new ObservableCollection<Level>();
-             _levels = new ObservableCollection<Level>();
+            _levels = new ObservableCollection<Level>();
+            _levels = new ObservableCollection<Level>();
             using (Context context = new Context())
             {
-                var temp = Repository.Select<Level>().Where(c => true==true).ToList();
 
-                if (context.Levels.Count() > 0)
+
+                var levels = context.Levels.Join(context.Videos, // второй набор
+                p => p.VideoId, // свойство-селектор объекта из первого набора
+                c => c.Id, // свойство-селектор объекта из второго набора
+                (p, c) => new // результат
                 {
-                    foreach (var item in temp)
+                    levelId = p.Id,
+                vidId = p.VideoId,
+                Name = p.Name,
+                Title = c.Title,
+               });
+
+                foreach (var p in levels)
+                {
+                    Level l = new Level()
                     {
-                        _levels.Add(item);
-                    }
+                        Name = p.Name,
+                        Id = p.levelId,
+                        VideoId = p.vidId,
+                        Video = new Video { Title = p.Title,Id=p.vidId} };
+                    _levels.Add(l);
                 }
 
             }
@@ -96,8 +110,12 @@ namespace MVVMexample.ViewModel
                 return saveCommand ??
                   (saveCommand = new RelayCommand(obj =>
                   {
-//                      context.Levels.First() = _levels.First() ;
-                      context.Entry(_levels.First()).State = EntityState.Modified;
+                      foreach(Level l in _levels)
+                      {
+                          context.Entry(l).State = EntityState.Modified;
+                          context.Entry(l.Video).State = EntityState.Modified;
+                      }
+                     
                       context.SaveChanges();
                       foreach (Level vl in context.Levels)
                       { }

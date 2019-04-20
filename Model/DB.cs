@@ -14,6 +14,7 @@ namespace MVVMexample.Model
         { }
 
         public DbSet<Level> Levels { get; set; }
+        public DbSet<Video> Videos { get; set; }
     }
 
     public class Repository

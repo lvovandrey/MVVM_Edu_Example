@@ -11,6 +11,7 @@ namespace MVVMexample.Model
     public class Level : INotifyPropertyChanged
     {
         public int Id { get; set; }
+        public int VideoId { get; set; }
 
         [NotMapped]
         private string _name { get; set; }

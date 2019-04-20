@@ -17,8 +17,6 @@ namespace MVVMexample.ViewModel
         private ObservableCollection<Level> _levels { get; set; }
         private ObservableCollection<LevelVM> _levelsvm { get; set; }
 
-
-
         public ObservableCollection<LevelVM> LevelVMs
         {
             get
@@ -46,11 +44,6 @@ namespace MVVMexample.ViewModel
         {
             context = new Context();
               _levels = new ObservableCollection<Level>();
-            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
-            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
-            //_levels.Add(new Level() { Video = new Video() { Title = "sdfsadfs" }, Name = "sdfasdfnsdf" });
-
-
              _levels = new ObservableCollection<Level>();
             using (Context context = new Context())
             {

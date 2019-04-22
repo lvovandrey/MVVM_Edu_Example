@@ -54,7 +54,7 @@ namespace MVVMexample.ViewModel
                 c => c.Id, // свойство-селектор объекта из второго набора
                 (p, c) => new // результат
                 {
-                    levelId = p.Id,
+                levelId = p.Id,
                 vidId = p.VideoId,
                 Name = p.Name,
                 Title = c.Title,
@@ -68,7 +68,7 @@ namespace MVVMexample.ViewModel
                         Id = p.levelId,
                         VideoId = p.vidId,
                         Video = new Video { Title = p.Title,Id=p.vidId} };
-                    _levels.Add(l);
+                       _levels.Add(l);
                 }
 
             }
@@ -87,16 +87,11 @@ namespace MVVMexample.ViewModel
                       Level l = new Level();
                       l.Name = "New Book";
                       l.Video = new Video() { Title = "dsdn" };
-                      _levels.Insert(0, l);
+                      _levels.Add(l);
+                      context.Levels.Add(l);
+                      context.SaveChanges();
 
-                     
-                          context.Levels.Add(l);
-                          context.SaveChanges();
-
-                          foreach(Level vl in context.Levels)
-                          { }
-
-                          OnPropertyChanged("LevelVMs");
+                      OnPropertyChanged("LevelVMs");
                      
                   }));
             }
